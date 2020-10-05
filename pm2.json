@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "node-boilerplate",
+      "script": "app.js",
+      "exec_mode": "fork"
+    }
+  ]
+}
