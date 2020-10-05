@@ -4,7 +4,7 @@ module.exports = {
   database: {
     uri: process.env.DATABASE_URI,
     iamApiKey: process.env.DATABASE_APIKEY,
-    adapter: 'cloudant',
+    adapter: 'mongodb',
   },
   redis: {
     uri: process.env.REDIS_URI,
