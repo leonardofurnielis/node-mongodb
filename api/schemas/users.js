@@ -1,16 +1,61 @@
 'use strict';
 
-const Joi = require('joi');
+const mongoose = require('mongoose');
+const validator = require('validator');
 
-const schema = Joi.object({
-  _id: Joi.any(),
-  _rev: Joi.any(),
-  createdAt: Joi.date().timestamp().default(new Date().getTime()),
-  username: Joi.string().alphanum().min(3).max(30).required(),
-  name: Joi.string().min(5).required(),
-  email: Joi.string().email().required(),
-  password: Joi.string().min(5).required(),
-  active: Joi.boolean().default(true),
+const Schema = new mongoose.Schema(
+  {
+    created_at: {
+      type: Date,
+      index: true,
+      required: true,
+      default: new Date().getTime(),
+    },
+    username: {
+      type: String,
+      index: true,
+      required: true,
+      trim: true,
+      unique: true,
+      minlength: 3,
+      maxlength: 30,
+      lowercase: true,
+    },
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+      minlength: 3,
+    },
+    email: {
+      type: String,
+      index: true,
+      required: true,
+      trim: true,
+      unique: true,
+      minlength: 5,
+      lowercase: true,
+      validate: {
+        validator: validator.isEmail,
+        message: '{VALUE} is not an email',
+      },
+    },
+    password: {
+      type: String,
+      required: true,
+      minlength: 5,
+    },
+    active: {
+      type: Boolean,
+      index: true,
+      default: true,
+    },
+  },
+  { collection: 'users' }
+);
+
+Schema.index({
+  createdAt: 1,
 });
 
-module.exports = schema;
+module.exports = Schema;

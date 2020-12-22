@@ -2,6 +2,7 @@
 
 const express = require('express');
 const controller = require('../../controllers/v1/users');
+const authenticate = require('../../policies/is-logged-in');
 
 module.exports = (middlewares) => {
   const router = express.Router();
@@ -10,7 +11,7 @@ module.exports = (middlewares) => {
     middlewares.forEach((middleware) => router.use(middleware));
   }
 
-  router.get('/', controller.list);
+  router.get('/', authenticate, controller.list);
   router.post('/', controller.insert);
   router.get('/:id', controller.find);
   router.put('', controller.update);
