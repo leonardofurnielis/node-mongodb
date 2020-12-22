@@ -9,8 +9,8 @@ const errorHandler = require('node-error-handler');
 // const swaggerUi = require('swagger-ui-express');
 
 const routesLoader = require('./routes');
-const correlationID = require('../middlewares/correlation_id');
-const urlNotFound = require('../middlewares/url_not_found');
+const correlationID = require('../middlewares/request-id');
+const urlNotFound = require('../middlewares/url-not-found');
 // const basicAuth = require('../middlewares/www_basic_auth');
 // const openApi = require('../../openapi.json');
 
