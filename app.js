@@ -4,10 +4,10 @@ const express = require('express');
 
 const server = require('./server');
 
-async function startServer() {
+async function start_server() {
   const app = express();
 
   server.listen(app);
 }
 
-startServer();
+start_server();
