@@ -31,9 +31,7 @@ module.exports = (conn) => {
     connection = mongoose.createConnection(connections[conn].uri, options);
 
     // Connection throws an error
-    connection.on('error', (err) => {
-      return console.error(err);
-    });
+    connection.on('error', (err) => console.error(err));
   }
 
   return connection;
