@@ -1,10 +1,13 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable func-names */
+
 'use strict';
 
 const bcrypt = require('bcryptjs');
 const _ = require('lodash');
 
 const schema = require('../schemas/users');
-const connection = require('../../server/datastore/connections/mongodb')('database');
+const connection = require('../../server/datastores/mongodb')('database');
 
 schema.methods.toJSON = function() {
   const user = this;
@@ -16,7 +19,7 @@ schema.methods.toJSON = function() {
 schema.statics.find_by_credentials = function(username, password) {
   const User = this;
 
-  return User.findOne({ $or: [{ username }, { email: username }] }).then(user => {
+  return User.findOne({ $or: [{ username }, { email: username }] }).then((user) => {
     if (!user) {
       return Promise.reject(new Error("The requested 'user' was not found"));
     }
