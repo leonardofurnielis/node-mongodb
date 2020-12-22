@@ -4,7 +4,7 @@ const Users = require('../../models/users');
 
 const list = async (req, res, next) => {
   try {
-    const doc = await Users.list();
+    const doc = await Users.find();
 
     return res.status(200).json(doc);
   } catch (err) {
@@ -15,7 +15,7 @@ const list = async (req, res, next) => {
 const find = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const doc = await Users.find(id);
+    const doc = await Users.findOne(id);
 
     return res.status(200).json(doc);
   } catch (err) {
@@ -25,7 +25,7 @@ const find = async (req, res, next) => {
 
 const insert = async (req, res, next) => {
   try {
-    const doc = await Users.insert(req.body);
+    const doc = await Users.save(req.body);
 
     return res.status(200).json(doc);
   } catch (err) {
@@ -35,7 +35,7 @@ const insert = async (req, res, next) => {
 
 const update = async (req, res, next) => {
   try {
-    const doc = await Users.update(req.body);
+    const doc = await Users.findOneAndUpdate(req.body);
 
     return res.status(200).json(doc);
   } catch (err) {
@@ -46,7 +46,7 @@ const update = async (req, res, next) => {
 const remove = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const doc = await Users.remove(id);
+    const doc = await Users.findOneAndRemove(id);
 
     return res.status(200).json(doc);
   } catch (err) {
