@@ -9,7 +9,13 @@ const Schema = new mongoose.Schema(
       type: Date,
       index: true,
       required: true,
-      default: new Date().getTime(),
+      default: new Date(),
+    },
+    updated_at: {
+      type: Date,
+      index: true,
+      required: true,
+      default: new Date(),
     },
     username: {
       type: String,

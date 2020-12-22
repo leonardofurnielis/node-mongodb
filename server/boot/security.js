@@ -17,7 +17,7 @@ module.exports = {
     passport.use(
       new JwtStrategy(opts, async (jwtPayload, done) => {
         try {
-          const user = await users.find(jwtPayload._id).docs[0];
+          const user = await users.findOne({ _id: jwtPayload._id });
 
           if (user && user.active === true) {
             return done(null, user);

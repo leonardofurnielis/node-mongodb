@@ -9,14 +9,14 @@ const _ = require('lodash');
 const schema = require('../schemas/users');
 const connection = require('../../server/datastores/mongodb')('database');
 
-schema.methods.toJSON = function() {
+schema.methods.toJSON = function () {
   const user = this;
   const user_object = user.toObject();
 
-  return _.pick(user_object, ['_id', 'username', 'name', 'email', 'active']);
+  return _.pick(user_object, ['_id', 'created_at', 'updated_at','username', 'name', 'email', 'active']);
 };
 
-schema.statics.find_by_credentials = function(username, password) {
+schema.statics.find_by_credentials = function (username, password) {
   const User = this;
 
   return User.findOne({ $or: [{ username }, { email: username }] }).then((user) => {
@@ -35,7 +35,7 @@ schema.statics.find_by_credentials = function(username, password) {
   });
 };
 
-schema.pre('save', function(next) {
+schema.pre('save', function (next) {
   if (this.isModified('password')) {
     bcrypt.genSalt(10, (err, salt) => {
       bcrypt.hash(this.password, salt, (error, hash) => {
@@ -48,7 +48,7 @@ schema.pre('save', function(next) {
   }
 });
 
-schema.pre('findOneAndUpdate', function(next) {
+schema.pre('findOneAndUpdate', function (next) {
   if (this._update.$set.password && this._update.$set.password !== '') {
     bcrypt.genSalt(10, (err, salt) => {
       bcrypt.hash(this._update.$set.password, salt, (error, hash) => {
