@@ -3,20 +3,21 @@
 'use strict';
 
 const passport = require('passport');
+const uuid = require('uuid');
 const JwtStrategy = require('passport-jwt').Strategy;
 const { ExtractJwt } = require('passport-jwt');
 
 module.exports = {
   passport: () => {
-    const Users = require('../../api/models/users');
-
+    const users = require('../../api/models/users');
+    const secret = process.env.PW_SECRET || uuid.v1();
     const opts = {};
-    opts.jwtFromRequest = ExtractJwt.fromHeader('authorization');
-    opts.secretOrKey = process.env.PW_SECRET;
+    opts.jwtFromRequest = ExtractJwt.fromHeader('x-iam-key');
+    opts.secretOrKey = secret;
     passport.use(
       new JwtStrategy(opts, async (jwtPayload, done) => {
         try {
-          const user = await Users.find(jwtPayload._id).docs[0];
+          const user = await users.find(jwtPayload._id).docs[0];
 
           if (user && user.active === true) {
             return done(null, user);
@@ -27,5 +28,6 @@ module.exports = {
         }
       })
     );
+    process.env.PW_SECRET = secret;
   },
 };

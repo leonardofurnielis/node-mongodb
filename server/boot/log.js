@@ -27,9 +27,9 @@ log4js.configure({
   },
 });
 
-module.exports = async (name = '::') => {
+module.exports = async (name = 'app') => {
   const logger = log4js.getLogger(name);
-  logger.level = process.env.LOGGER_LEVEL;
+  logger.level = process.env.LOGGER_LEVEL || 'debug';
 
   global.console.debug = (...args) => {
     logger.debug(...args);
@@ -50,4 +50,6 @@ module.exports = async (name = '::') => {
   global.console.error = (...args) => {
     logger.error(...args);
   };
+
+  process.env.LOGGER_LEVEL = logger.level;
 };

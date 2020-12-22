@@ -1,39 +1,33 @@
 'use strict';
 
 const cors = require('cors');
-const bodyParser = require('body-parser');
+const body_parser = require('body-parser');
 const helmet = require('helmet');
 const compression = require('compression');
 const passport = require('passport');
-const errorHandler = require('node-error-handler');
-// const swaggerUi = require('swagger-ui-express');
+const error_handler = require('node-error-handler');
 
-const routesLoader = require('./routes');
-const correlationID = require('../middlewares/request-id');
-const urlNotFound = require('../middlewares/url-not-found');
-// const basicAuth = require('../middlewares/www_basic_auth');
-// const openApi = require('../../openapi.json');
+const routes_loader = require('./routes');
+const request_id = require('../middlewares/request-id');
+const url_not_found = require('../middlewares/url-not-found');
 
 module.exports = async (app) => {
   // Middlewares
   app.use(cors());
   app.use(helmet());
-  app.use(bodyParser.urlencoded({ extended: true }));
-  app.use(bodyParser.json());
+  app.use(body_parser.urlencoded({ extended: true }));
+  app.use(body_parser.json());
   app.use(compression());
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use(correlationID());
-
-  // Expose API openapi documentation
-  // app.use('/explorer', basicAuth(), swaggerUi.serve, swaggerUi.setup(openApi));
+  app.use(request_id());
 
   // Load API routes
-  routesLoader(app);
+  routes_loader(app);
 
   // HTTP 404 handler
-  app.use(urlNotFound());
+  app.use(url_not_found());
 
   // HTTP error handler
-  app.use(errorHandler());
+  app.use(error_handler());
 };

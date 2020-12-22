@@ -18,9 +18,11 @@ module.exports = (conn) => {
     poolSize: 100,
   };
 
-  // DB uses sslCA Certificate
+  // DB uses ssl Certificate File
   if (connections[conn].sslCA) {
-    options.sslCA = fs.readFileSync(path.join(__dirname, `../../ca/${connections[conn].sslCA}`));
+    options.sslCA = fs.readFileSync(
+      path.join(__dirname, `../../ca/${connections[conn].ssl_ca_file}`)
+    );
   }
 
   let connection;
