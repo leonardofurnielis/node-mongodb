@@ -42,4 +42,6 @@ schema.pre('findOneAndUpdate', function (next) {
   }
 });
 
-module.exports = connection.model('users', schema);
+module.exports = () => {
+  return connection.model('users', schema);
+};

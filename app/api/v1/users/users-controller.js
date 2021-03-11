@@ -15,7 +15,7 @@ const list = async (req, res, next) => {
 const find = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const doc = await Users.findOne({ _id: id });
+    const doc = await Users().findOne({ _id: id });
 
     return res.status(200).json(doc);
   } catch (err) {
@@ -25,7 +25,7 @@ const find = async (req, res, next) => {
 
 const insert = async (req, res, next) => {
   try {
-    const doc = await Users.create(req.body);
+    const doc = await Users().create(req.body);
 
     return res.status(200).json(doc);
   } catch (err) {
@@ -36,7 +36,7 @@ const insert = async (req, res, next) => {
 const update = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const doc = await Users.findOneAndUpdate({ _id: id }, { $set: req.body }, { new: true });
+    const doc = await Users().findOneAndUpdate({ _id: id }, { $set: req.body }, { new: true });
 
     return res.status(200).json(doc);
   } catch (err) {
@@ -47,7 +47,7 @@ const update = async (req, res, next) => {
 const remove = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const doc = await Users.findOneAndRemove({ _id: id });
+    const doc = await Users().findOneAndRemove({ _id: id });
 
     return res.status(200).json(doc);
   } catch (err) {
