@@ -1,4 +1,4 @@
-# node-boilerplate
+# node-sample-mongodb
 
 ## Table of Contents
 
@@ -19,6 +19,6 @@ $ npm start
 To run this code using Docker container execute the following commands into project root directory
 
 ```bash
-$ docker build -t node-boilerplate .
-$ docker run -p 8080:3000 -d node-boilerplate
+$ docker build -t node-sample-mongodb .
+$ docker run -p 8080:3000 -d node-sample-mongodb
 ```
