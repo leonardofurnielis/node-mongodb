@@ -1,6 +1,7 @@
 # node-sample-mongodb
 
 [![Build Status](https://travis-ci.org/leonardofurnielis/node-sample-mongodb.svg?branch=master)](https://travis-ci.org/leonardofurnielis/node-sample-mongodb)
+[![codecov](https://codecov.io/gh/leonardofurnielis/node-sample-mongodb/branch/master/graph/badge.svg?token=3OQBM9XRVO)](https://codecov.io/gh/leonardofurnielis/node-sample-mongodb)
 
 ## Table of Contents
 

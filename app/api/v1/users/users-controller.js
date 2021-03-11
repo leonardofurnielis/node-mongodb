@@ -4,7 +4,7 @@ const Users = require('./users-model');
 
 const list = async (req, res, next) => {
   try {
-    const doc = await Users.find();
+    const doc = await Users().find();
 
     return res.status(200).json(doc);
   } catch (err) {
