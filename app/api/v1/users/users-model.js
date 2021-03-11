@@ -6,41 +6,14 @@
 const bcrypt = require('bcryptjs');
 const _ = require('lodash');
 
-const schema = require('../schemas/users');
-const connection = require('../../server/datastores/mongodb')('database');
+const schema = require('./users-schema');
+const connection = require('../../../../config/datastores/mongodb')('database');
 
 schema.methods.toJSON = function () {
   const user = this;
   const doc = user.toObject();
 
-  return _.pick(doc, [
-    '_id',
-    'createdAt',
-    'updatedAt',
-    'username',
-    'name',
-    'email',
-    'active',
-  ]);
-};
-
-schema.statics.findByCredentials = function (username, password) {
-  const User = this;
-
-  return User.findOne({ $or: [{ username }, { email: username }] }).then((user) => {
-    if (!user) {
-      return Promise.reject(new Error("The requested 'user' was not found"));
-    }
-
-    return new Promise((resolve, reject) => {
-      bcrypt.compare(password, user.password, (err, isMatch) => {
-        if (!isMatch || err) {
-          reject(new Error("The requested 'password' was wrong"));
-        }
-        resolve(user);
-      });
-    });
-  });
+  return _.pick(doc, ['_id', 'createdAt', 'updatedAt', 'username', 'name', 'email', 'active']);
 };
 
 schema.pre('save', function (next) {
