@@ -1,5 +1,7 @@
 # node-sample-mongodb
 
+[![Build Status](https://travis-ci.org/leonardofurnielis/node-sample-mongodb.svg?branch=master)](https://travis-ci.org/leonardofurnielis/node-sample-mongodb)
+
 ## Table of Contents
 
 - [Local](#local)
