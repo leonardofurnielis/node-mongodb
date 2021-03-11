@@ -19,4 +19,4 @@ dist/
 
 # Environment
 !/config/env/.env_example
-/config/env/*
+
