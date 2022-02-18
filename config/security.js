@@ -8,10 +8,10 @@ const JwtStrategy = require('passport-jwt').Strategy;
 const { ExtractJwt } = require('passport-jwt');
 
 module.exports = () => {
-  const Users = require('../app/api/v1/users/users-model');
+  const Users = require('../src/api/v1/users/users-model');
   const secret = process.env.PW_SECRET || uuid.v1();
   const opts = {};
-  opts.jwtFromRequest = ExtractJwt.fromHeader('x-iam-key');
+  opts.jwtFromRequest = ExtractJwt.fromHeader('x-api-key');
   opts.secretOrKey = secret;
   passport.use(
     new JwtStrategy(opts, async (jwtPayload, done) => {

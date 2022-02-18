@@ -1,6 +1,6 @@
 # node-sample-mongodb
 
-[![Build Status](https://travis-ci.org/leonardofurnielis/node-sample-mongodb.svg?branch=master)](https://travis-ci.org/leonardofurnielis/node-sample-mongodb)
+![workflow](https://github.com/leonardofurnielis/node-sample-mongodb/actions/workflows/test-coverage.yml/badge.svg)
 [![codecov](https://codecov.io/gh/leonardofurnielis/node-sample-mongodb/branch/master/graph/badge.svg?token=3OQBM9XRVO)](https://codecov.io/gh/leonardofurnielis/node-sample-mongodb)
 
 ## Table of Contents
