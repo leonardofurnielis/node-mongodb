@@ -11,11 +11,7 @@ mongoose.Promise = global.Promise;
 module.exports = (conn) => {
   const options = {
     dbName: `${conn}`,
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    poolSize: 100,
+    minPoolSize: 10,
   };
 
   // DB uses ssl Certificate File

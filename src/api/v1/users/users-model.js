@@ -3,11 +3,62 @@
 
 'use strict';
 
+const validator = require('validator');
+const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const _ = require('lodash');
 
-const schema = require('./users-schema');
 const connection = require('../../../../config/datastores/mongodb')('database');
+
+const schema = new mongoose.Schema(
+  {
+    username: {
+      type: String,
+      index: true,
+      required: true,
+      trim: true,
+      unique: true,
+      minlength: 3,
+      maxlength: 30,
+      lowercase: true,
+    },
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+      minlength: 3,
+    },
+    email: {
+      type: String,
+      index: true,
+      required: true,
+      trim: true,
+      unique: true,
+      minlength: 5,
+      lowercase: true,
+      validate: {
+        validator: validator.isEmail,
+        message: '{VALUE} is not an email',
+      },
+    },
+    password: {
+      type: String,
+      required: true,
+      minlength: 5,
+    },
+    active: {
+      type: Boolean,
+      index: true,
+      default: true,
+    },
+  },
+  { collection: 'users', timestamps: true }
+);
+
+schema.index({
+  createdAt: 1,
+  updatedAt: 1,
+});
 
 schema.methods.toJSON = function () {
   const user = this;

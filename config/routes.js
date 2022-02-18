@@ -45,8 +45,6 @@ const routesLoader = (app) => {
       app.use(`/api/${fn}`, routeFile());
     });
 
-  console.info(`Routes successfully loaded`);
-
   // Expose API openAPI documentation
   // app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
