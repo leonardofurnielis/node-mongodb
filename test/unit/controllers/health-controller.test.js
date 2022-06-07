@@ -3,10 +3,10 @@
 const request = require('supertest');
 const app = require('../../../../config');
 
-describe('GET /api/liveness', () => {
+describe('GET /api/health', () => {
   test('When called, should return 200', () => {
     request(app)
-      .get('/api/liveness')
+      .get('/api/health')
       .then((response) => {
         expect(response.statusCode).toBe(200);
       });
@@ -14,9 +14,9 @@ describe('GET /api/liveness', () => {
 
   test('When called, should have all keys', () => {
     request(app)
-      .get('/api/liveness')
+      .get('/api/health')
       .then((response) => {
-        expect(response.body).to.have.all.keys('uptime', 'version', 'sys');
+        expect(response.body).to.have.all.keys('status', 'uptime', 'node_version', 'sys');
       });
   });
 });

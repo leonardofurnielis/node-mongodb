@@ -3,7 +3,7 @@
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 
-const findByCredentials = require('../../guards/user-authenticate');
+const findByCredentials = require('../../server/guards/user-authenticate');
 
 const authenticate = async (req, res, next) => {
   try {

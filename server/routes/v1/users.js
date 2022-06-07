@@ -1,8 +1,6 @@
-'use strict';
-
 const express = require('express');
-const controller = require('./users-controller');
-const authenticate = require('../../../guards/jwt-authenticate');
+const controller = require('../../../src/controllers/v1/users/users-controller');
+// const authenticate = require('../../guards/jwt-authenticate');
 
 module.exports = (middlewares) => {
   const router = express.Router();
@@ -12,7 +10,7 @@ module.exports = (middlewares) => {
   }
 
   router.get('/', controller.list);
-  router.post('/', authenticate, controller.insert);
+  router.post('/', controller.insert);
   router.get('/:id', controller.find);
   router.put('/:id', controller.update);
   router.delete('/:id', controller.remove);

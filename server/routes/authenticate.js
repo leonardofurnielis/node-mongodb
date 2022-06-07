@@ -1,7 +1,5 @@
-'use strict';
-
 const express = require('express');
-const controller = require('./authenticate-controller');
+const controller = require('../../src/controllers/authenticate-controller');
 
 module.exports = (middlewares) => {
   const router = express.Router();

@@ -1,7 +1,7 @@
 'use strict';
 
 const bcrypt = require('bcryptjs');
-const mongodb = require('../../config/datastores/mongodb')('database');
+const mongodb = require('../config/datastores/mongodb')('database');
 
 const dbName = 'users';
 

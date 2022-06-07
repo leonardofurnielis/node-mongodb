@@ -5,10 +5,11 @@
 
 ## Table of Contents
 
-- [Local](#local)
-- [Docker](#docker)
+- Developing locally
+  - [Native runtime](#native runtime)
+  - [Docker](#docker)
 
-## Local
+## Native runtime 
 
 To run this code in your computer execute the following commands into project root directory
 

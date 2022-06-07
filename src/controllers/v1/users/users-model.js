@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const _ = require('lodash');
 
-const connection = require('../../../../config/datastores/mongodb')('database');
+const connection = require('../../../../server/config/datastores/mongodb')('database');
 
 const schema = new mongoose.Schema(
   {
