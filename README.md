@@ -6,7 +6,7 @@
 ## Table of Contents
 
 - Developing locally
-  - [Native runtime](#native runtime)
+  - [Native runtime](#native-runtime)
   - [Docker](#docker)
 
 ## Native runtime 
