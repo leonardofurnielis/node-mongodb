@@ -3,30 +3,19 @@
 'use strict';
 
 const passport = require('passport');
-const uuid = require('uuid');
 const JwtStrategy = require('passport-jwt').Strategy;
 const { ExtractJwt } = require('passport-jwt');
+const fs = require('fs');
+const path = require('path');
 
 module.exports = () => {
-  const Users = require('../../src/controllers/v1/users/users-model');
-  const secret = process.env.PW_SECRET || uuid.v1();
+  const publicKEY = fs.readFileSync(path.join(__dirname, '../../public.pem'));
   const opts = {};
   opts.jwtFromRequest = ExtractJwt.fromHeader('x-api-key');
-  opts.secretOrKey = secret;
+  opts.secretOrKey = publicKEY;
   passport.use(
     new JwtStrategy(opts, async (jwtPayload, done) => {
-      try {
-        let user = await Users.find(jwtPayload._id);
-        // eslint-disable-next-line prefer-destructuring
-        user = user.docs[0];
-        if (user && user.active === true) {
-          return done(null, user);
-        }
-        done(null, false);
-      } catch (err) {
-        return done(err, false);
-      }
+      return done(null, jwtPayload);
     })
   );
-  process.env.PW_SECRET = secret;
 };
