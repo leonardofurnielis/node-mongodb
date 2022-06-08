@@ -40,6 +40,8 @@ app.use((req, res, next) => {
 const debug = process.env.LOGGER_LEVEL.toLowerCase() === 'debug' ? true : false;
 app.use(errorHandler({ debug }));
 
-securityLoader();
+if (!process.env.NODE_ENV === 'test') {
+  securityLoader();
+}
 
 module.exports = app;
