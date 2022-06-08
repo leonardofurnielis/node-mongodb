@@ -20,5 +20,3 @@ dist/
 # Environment
 !/.env_example
 .env
-private.pem
-public.pem
