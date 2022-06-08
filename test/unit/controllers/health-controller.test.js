@@ -16,7 +16,10 @@ describe('GET /api/health', () => {
     request(app)
       .get('/api/health')
       .then((response) => {
-        expect(response.body).to.have.all.keys('status', 'uptime', 'node_version', 'sys');
+        expect(response.body).toHaveProperty('status');
+        expect(response.body).toHaveProperty('uptime');
+        expect(response.body).toHaveProperty('node_version');
+        expect(response.body).toHaveProperty('sys');
       });
   });
 });
