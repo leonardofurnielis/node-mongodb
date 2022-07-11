@@ -14,7 +14,7 @@ const httpLoader = require('./config/http');
 const securityLoader = require('./config/security');
 
 // Import routes dependencies
-const healthRoutes = require('./routes/health');
+const healthcheckRoute = require('./routes/healthcheck');
 const authenticateRoutes = require('./routes/authenticate');
 const usersRoutes = require('./routes/v1/users');
 
@@ -26,7 +26,7 @@ httpLoader(app);
 
 // Routes and api calls
 app.use('/api/authenticate', authenticateRoutes());
-app.use('/api/health', healthRoutes());
+app.use('/api/healthcheck', healthcheckRoute());
 app.use('/api/v1/users', usersRoutes());
 
 // 404 handler
