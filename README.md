@@ -1,7 +1,7 @@
-# node-app-mongodb
+# node-bootstrap-mongodb
 
-![workflow](https://github.com/leonardofurnielis/node-app-mongodb/actions/workflows/test-coverage.yml/badge.svg)
-[![codecov](https://codecov.io/gh/leonardofurnielis/node-app-mongodb/branch/master/graph/badge.svg?token=3OQBM9XRVO)](https://codecov.io/gh/leonardofurnielis/node-app-mongodb)
+![workflow](https://github.com/leonardofurnielis/node-bootstrap-mongodb/actions/workflows/test-coverage.yml/badge.svg)
+[![codecov](https://codecov.io/gh/leonardofurnielis/node-bootstrap-mongodb/branch/master/graph/badge.svg?token=3OQBM9XRVO)](https://codecov.io/gh/leonardofurnielis/node-bootstrap-mongodb)
 
 ## Table of Contents
 
@@ -25,6 +25,6 @@ To run this code using Docker container execute the following commands into proj
 
 ```bash
 $ sh generating-rsa-key.sh
-$ docker build -t node-app-mongodb .
-$ docker run -p 8080:3000 -d node-app-mongodb
+$ docker build -t node-bootstrap-mongodb .
+$ docker run -p 8080:3000 -d node-bootstrap-mongodb
 ```
