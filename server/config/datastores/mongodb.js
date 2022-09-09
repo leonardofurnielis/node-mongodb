@@ -8,27 +8,27 @@ const connections = require('./connections');
 
 mongoose.Promise = global.Promise;
 
-module.exports = (conn) => {
+module.exports = (connection = 'MONGO', sslCAFilename) => {
   const options = {
-    dbName: `${conn}`,
+    dbName: `${connection}`,
     minPoolSize: 10,
   };
 
   // DB uses ssl Certificate File
-  if (connections[conn].sslCA) {
+  if (sslCAFilename) {
     options.sslCA = fs.readFileSync(
-      path.join(__dirname, `../env/${connections[conn].ssl_ca_file}`)
+      path.join(__dirname, `../../${sslCAFilename}`)
     );
   }
 
-  let connection;
+  let service;
 
-  if (connections[conn].uri && connections[conn].adapter === 'mongodb') {
-    connection = mongoose.createConnection(connections[conn].uri, options);
+  if (process.env[`${connection}_URL`]) {
+    service = mongoose.createConnection(process.env[`${connection}_URL`], options);
 
     // Connection throws an error
-    connection.on('error', (err) => console.error(err));
+    service.on('error', (err) => console.error(err));
   }
 
-  return connection;
+  return service;
 };
