@@ -1,6 +1,6 @@
 'use strict';
 
-const Users = require('./users-model');
+const Users = require('../../../models/v1/users-model');
 
 const list = async (req, res, next) => {
   try {

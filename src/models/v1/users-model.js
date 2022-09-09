@@ -8,8 +8,9 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const _ = require('lodash');
 
-const connection = require('../../../../server/config/datastores/mongodb')('database');
+const connection = require('../../../../server/config/datastores/mongodb')();
 
+const dbName = 'users';
 const schema = new mongoose.Schema(
   {
     username: {
@@ -52,7 +53,7 @@ const schema = new mongoose.Schema(
       default: true,
     },
   },
-  { collection: 'users', timestamps: true }
+  { collection: dbName, timestamps: true }
 );
 
 schema.index({
@@ -94,5 +95,5 @@ schema.pre('findOneAndUpdate', function (next) {
 });
 
 module.exports = () => {
-  return connection.model('users', schema);
+  return connection.model(dbName, schema);
 };
