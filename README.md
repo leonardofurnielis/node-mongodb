@@ -1,7 +1,7 @@
-# nodejs-mongo
+# nodejs-mongodb
 
-![workflow](https://github.com/leonardofurnielis/nodejs-mongo/actions/workflows/build-test.yml/badge.svg)
-[![codecov](https://codecov.io/gh/leonardofurnielis/nodejs-mongo/branch/master/graph/badge.svg?token=3OQBM9XRVO)](https://codecov.io/gh/leonardofurnielis/nodejs-mongo)
+![workflow](https://github.com/leonardofurnielis/nodejs-mongodb/actions/workflows/build-test.yml/badge.svg)
+[![codecov](https://codecov.io/gh/leonardofurnielis/nodejs-mongodb/branch/master/graph/badge.svg?token=3OQBM9XRVO)](https://codecov.io/gh/leonardofurnielis/nodejs-mongodb)
 
 ## Table of Contents
 
@@ -25,6 +25,6 @@ To run this code using Docker container execute the following commands into proj
 
 ```bash
 $ sh generating-rsa-key.sh
-$ docker build -t nodejs-mongo .
-$ docker run -p 8080:3000 -d nodejs-mongo
+$ docker build -t nodejs-mongodb .
+$ docker run -p 8080:3000 -d nodejs-mongodb
 ```

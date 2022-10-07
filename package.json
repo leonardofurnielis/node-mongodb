@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-mongo",
+  "name": "nodejs-mongodb",
   "version": "2.2.0",
   "description": "",
   "main": "app.js",

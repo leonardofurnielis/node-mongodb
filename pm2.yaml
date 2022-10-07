@@ -1,4 +1,4 @@
 apps:
-  - name: 'nodejs-mongo'
+  - name: 'nodejs-mongodb'
     script: './app.js'
     exec_mode: 'fork'
