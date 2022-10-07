@@ -5,7 +5,7 @@ const _ = require('lodash');
 const fs = require('fs');
 const path = require('path');
 
-const findByCredentials = require('../../server/guards/user-authenticate');
+const findByCredentials = require('../../config/authentications/user-authenticate');
 
 const authenticate = async (req, res, next) => {
   try {
@@ -13,9 +13,9 @@ const authenticate = async (req, res, next) => {
     const [username, password] = Buffer.from(base64Auth, 'base64').toString().split(':');
 
     const user = await findByCredentials(username, password);
-    const payload = _.pick(user, ['_id', 'username', 'name', 'email', 'active']);
+    const payload = _.pick(user, ['_id', 'username', 'name', 'active']);
 
-    const privateKEY = fs.readFileSync(path.join(__dirname, '../../private.pem'));
+    const privateKEY = fs.readFileSync(path.join(__dirname, '../../__keys__/jwtRS256.pem'));
     const token = jwt.sign(payload, privateKEY, {
       expiresIn: '6h',
       algorithm: 'RS256',

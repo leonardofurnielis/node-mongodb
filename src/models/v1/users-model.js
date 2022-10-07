@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const _ = require('lodash');
 
-const connection = require('../../../../server/config/datastores/mongodb')();
+const connection = require('../../../config/datasources/mongodb-connector')();
 
 const dbName = 'users';
 const schema = new mongoose.Schema(
@@ -19,7 +19,7 @@ const schema = new mongoose.Schema(
       required: true,
       trim: true,
       unique: true,
-      minlength: 3,
+      minlength: 4,
       maxlength: 30,
       lowercase: true,
     },
@@ -27,7 +27,7 @@ const schema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      minlength: 3,
+      minlength: 2,
     },
     email: {
       type: String,
@@ -35,7 +35,6 @@ const schema = new mongoose.Schema(
       required: true,
       trim: true,
       unique: true,
-      minlength: 5,
       lowercase: true,
       validate: {
         validator: validator.isEmail,
@@ -45,7 +44,7 @@ const schema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
-      minlength: 5,
+      minlength: 6,
     },
     active: {
       type: Boolean,

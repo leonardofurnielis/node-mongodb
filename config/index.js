@@ -8,15 +8,17 @@ const errorHandler = require('node-error-handler');
 
 // Import config dependencies
 const app = express();
-const environmentLoader = require('./config/environment');
-const logLoader = require('./config/log');
-const httpLoader = require('./config/http');
-const securityLoader = require('./config/security');
+const environmentLoader = require('./environment');
+const logLoader = require('./log');
+const httpLoader = require('./http');
+const securityLoader = require('./security');
 
 // Import routes dependencies
-const healthcheckRoute = require('./routes/healthcheck');
+const healthRoute = require('./routes/health');
 const authenticateRoutes = require('./routes/authenticate');
 const usersRoutes = require('./routes/v1/users');
+
+const apiV1 = '/api/v1';
 
 environmentLoader();
 
@@ -26,8 +28,8 @@ httpLoader(app);
 
 // Routes and api calls
 app.use('/api/authenticate', authenticateRoutes());
-app.use('/api/healthcheck', healthcheckRoute());
-app.use('/api/v1/users', usersRoutes());
+app.use('/api/health', healthRoute());
+app.use(apiV1 + '/users', usersRoutes());
 
 // 404 handler
 app.use((req, res, next) => {

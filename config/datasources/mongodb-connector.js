@@ -4,8 +4,6 @@ const mongoose = require('mongoose');
 const path = require('path');
 const fs = require('fs');
 
-const connections = require('./connections');
-
 mongoose.Promise = global.Promise;
 
 module.exports = (connection = 'MONGO', sslCAFilename) => {
@@ -16,9 +14,7 @@ module.exports = (connection = 'MONGO', sslCAFilename) => {
 
   // DB uses ssl Certificate File
   if (sslCAFilename) {
-    options.sslCA = fs.readFileSync(
-      path.join(__dirname, `../../${sslCAFilename}`)
-    );
+    options.sslCA = fs.readFileSync(path.join(__dirname, `../../${sslCAFilename}`));
   }
 
   let service;
