@@ -6,7 +6,7 @@ const fs = require('fs');
 
 mongoose.Promise = global.Promise;
 
-module.exports = (connection = 'MONGO', sslCAFilename) => {
+module.exports = (connection = 'MONGODB', sslCAFilename) => {
   const options = {
     dbName: `${connection}`,
     minPoolSize: 10,
