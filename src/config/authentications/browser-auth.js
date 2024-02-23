@@ -2,7 +2,7 @@
 
 module.exports = () => {
   // eslint-disable-next-line global-require
-  const findByCredentials = require('./user-authenticate');
+  const findByCredentials = require('./authentication-user');
 
   return async function browserAuthenticate(req, res, next) {
     try {

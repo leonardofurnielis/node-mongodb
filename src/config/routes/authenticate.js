@@ -1,5 +1,5 @@
 const express = require('express');
-const controller = require('../../controllers/authenticate-controller');
+const controller = require('../../api/controllers/authenticate-controller');
 
 module.exports = (middlewares) => {
   const router = express.Router();
