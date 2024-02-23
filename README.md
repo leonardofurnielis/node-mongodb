@@ -1,5 +1,3 @@
-# node-mongodb
-
 ![workflow](https://github.com/leonardofurnielis/node-mongodb/actions/workflows/build-test.yml/badge.svg)
 [![codecov](https://codecov.io/gh/leonardofurnielis/node-mongodb/branch/master/graph/badge.svg?token=3OQBM9XRVO)](https://codecov.io/gh/leonardofurnielis/node-mongodb)
 
@@ -22,11 +20,11 @@ npm start
 
 ## Containerized
 
-To run this code using Podman container execute the following commands into project root directory
+To run this code using Docker container execute the following commands into project root directory
 
 ```bash
 ./generate-rsa-key.sh
 
-podman build -t node-cloudant .
-podman run -p 8080:3000 -d node-cloudant
+docker build -t node-mongodb .
+docker run -p 8080:3000 -d node-mongodb
 ```

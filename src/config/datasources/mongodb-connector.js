@@ -12,7 +12,7 @@ module.exports = (connection = 'MONGODB', sslCAFilename) => {
     minPoolSize: 10,
   };
 
-  // DB uses ssl Certificate File
+  // Db uses ssl Certificate File
   if (sslCAFilename) {
     options.sslCA = fs.readFileSync(path.join(__dirname, `../../${sslCAFilename}`));
   }

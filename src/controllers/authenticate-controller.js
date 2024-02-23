@@ -5,7 +5,7 @@ const _ = require('lodash');
 const fs = require('fs');
 const path = require('path');
 
-const findByCredentials = require('../../config/authentications/user-authenticate');
+const findByCredentials = require('../config/authentications/user-authenticate');
 
 const authenticate = async (req, res, next) => {
   try {
