@@ -12,8 +12,6 @@
 To run this code in your computer execute the following commands into project root directory
 
 ```bash
-./generate-rsa-key.sh
-
 npm install
 npm start
 ```
@@ -23,8 +21,6 @@ npm start
 To run this code using Docker container execute the following commands into project root directory
 
 ```bash
-./generate-rsa-key.sh
-
 docker build -t node-mongodb .
 docker run -p 8080:3000 -d node-mongodb
 ```
